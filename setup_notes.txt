@@ -1,0 +1,71 @@
+- Make sure babel is installed
+  npm i -g babel babel-cli
+
+- Generate package.json
+  npm init
+
+- Add basic dependencies and plugins
+  npm i -S webpack webpack-dev-server react react-dom
+  npm install -D node-sass babel-core babel-loader babel-preset-react babel-preset-env
+
+- Create the following folder/file structure
+  /css
+  /sass
+    -main.scss
+  /src
+    -index.js
+    /components
+      -App.js
+  index.html
+
+- Configure webpack config file:
+  module.exports = {
+    entry: './main.js',
+    output: {
+      filename: 'bundle.js',
+    },
+    devServer: {
+      inline: true,
+      port: 8080,
+    },
+    module: {
+      loaders: [
+        {
+          test: /\.jsx?$/,
+          exclude: /node_modules/,
+          loader: 'babel-loader',
+          query: {
+            presets: ['env', 'react'],
+          },
+        },
+      ],
+    },
+  }
+
+- Add app start command and sass compile command to package.json "scripts" instructions
+  "start": "webpack-dev-server --hot",
+  "compile:sass": "node-sass sass/main.scss css/style.css -w"
+
+- Add content to index.html file
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>React App</title>
+
+      <link rel="stylesheet" href="css/style.css" />
+    </head>
+    <body>
+      <div id="app"></div>
+
+      <script src="index.js"></script>
+    </body>
+  </html>
+
+- Set up index.js file
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+
+  import App from './components/App';
+
+  ReactDOM.render(<App />, document.getElementById('app'));
