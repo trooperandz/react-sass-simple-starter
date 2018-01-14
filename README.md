@@ -1,4 +1,4 @@
-# react_sass_simple_starter
+# react-sass-simple-starter
 
 A _very_ simple front-end react and sass application starter using webpack-dev-server
 
