@@ -20,7 +20,7 @@
 
 - Configure webpack config file:
   module.exports = {
-    entry: './main.js',
+    entry: './src/index.js',
     output: {
       filename: 'bundle.js',
     },
@@ -58,7 +58,7 @@
     <body>
       <div id="app"></div>
 
-      <script src="index.js"></script>
+      <script src="bundle.js"></script>
     </body>
   </html>
 
